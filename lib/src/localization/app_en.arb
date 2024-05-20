@@ -1,0 +1,6 @@
+{
+  "appTitle": "church_tool",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
