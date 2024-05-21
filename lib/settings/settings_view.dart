@@ -1,4 +1,4 @@
-import 'package:church_tool/src/settings/settings_controller.dart';
+import 'package:church_tool/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 
 /// Displays the various settings that can be customized by the user.

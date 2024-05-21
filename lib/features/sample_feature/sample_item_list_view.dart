@@ -1,6 +1,5 @@
-import 'package:church_tool/src/sample_feature/sample_item.dart';
-import 'package:church_tool/src/sample_feature/sample_item_details_view.dart';
-import 'package:church_tool/src/settings/settings_view.dart';
+import 'package:church_tool/features/features.dart';
+import 'package:church_tool/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a list of SampleItems.

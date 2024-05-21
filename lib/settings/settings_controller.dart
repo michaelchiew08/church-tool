@@ -1,4 +1,4 @@
-import 'package:church_tool/src/settings/settings_service.dart';
+import 'package:church_tool/settings/settings_service.dart';
 import 'package:flutter/material.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
