@@ -1,6 +1,5 @@
+import 'package:church_tool/src/settings/settings_service.dart';
 import 'package:flutter/material.dart';
-
-import 'settings_service.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.
@@ -32,10 +31,14 @@ class SettingsController with ChangeNotifier {
 
   /// Update and persist the ThemeMode based on the user's selection.
   Future<void> updateThemeMode(ThemeMode? newThemeMode) async {
-    if (newThemeMode == null) return;
+    if (newThemeMode == null) {
+      return;
+    }
 
     // Do not perform any work if new and old ThemeMode are identical
-    if (newThemeMode == _themeMode) return;
+    if (newThemeMode == _themeMode) {
+      return;
+    }
 
     // Otherwise, store the new ThemeMode in memory
     _themeMode = newThemeMode;
