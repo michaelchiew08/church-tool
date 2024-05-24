@@ -4,9 +4,10 @@ import 'package:church_tool/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// The Widget that configures your application.
-class ChurchTool extends StatelessWidget {
+class ChurchTool extends ConsumerWidget {
   const ChurchTool({
     required this.settingsController,
     super.key,
@@ -15,7 +16,7 @@ class ChurchTool extends StatelessWidget {
   final SettingsController settingsController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Glue the SettingsController to the MaterialApp.
     //
     // The ListenableBuilder Widget listens to the SettingsController
@@ -25,8 +26,9 @@ class ChurchTool extends StatelessWidget {
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
-          // Hide Banner
+          // Hide the debug banner on the right.
           debugShowCheckedModeBanner: false,
+
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
