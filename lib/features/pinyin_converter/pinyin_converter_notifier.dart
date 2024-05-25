@@ -13,6 +13,10 @@ class PinyinConverterNotifier extends Notifier<String> {
   String build() => '';
 
   void convertText(String text) {
+    if (state.isNotEmpty) {
+      clearState();
+    }
+
     const ls = LineSplitter();
     final linesOfText = ls.convert(text);
     for (final element in linesOfText) {

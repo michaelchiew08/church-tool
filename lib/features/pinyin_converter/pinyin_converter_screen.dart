@@ -1,5 +1,5 @@
 import 'package:church_tool/features/pinyin_converter/pinyin_converter.dart';
-import 'package:church_tool/features/sample_feature/sample_item_list_view.dart';
+// import 'package:church_tool/features/sample_feature/sample_item_list_view.dart';
 import 'package:church_tool/settings/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,15 +22,15 @@ class PinyinConverterScreen extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Pinyin Converter'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.list),
-            onPressed: () {
-              Navigator.restorablePushNamed(
-                context,
-                SampleItemListView.routeName,
-              );
-            },
-          ),
+          // IconButton(
+          //   icon: const Icon(Icons.list),
+          //   onPressed: () {
+          //     Navigator.restorablePushNamed(
+          //       context,
+          //       SampleItemListView.routeName,
+          //     );
+          //   },
+          // ),
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
@@ -39,17 +39,17 @@ class PinyinConverterScreen extends HookConsumerWidget {
           ),
         ],
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Pinyin Converter'),
             TextField(
               key: UniqueKey(),
               maxLines: 10,
               keyboardType: TextInputType.multiline,
               controller: newTextFieldArea,
               decoration: const InputDecoration(
-                labelText: 'What needs to be done?',
+                labelText: 'Enter your text here for convertion',
               ),
             ),
             Row(
@@ -61,7 +61,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
                     newTextFieldArea.clear();
                   },
                   child: const Text(
-                    'Send',
+                    'Convert',
                     style: TextStyle(fontSize: 24),
                   ),
                 ),
