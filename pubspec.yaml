@@ -21,6 +21,7 @@ dependencies:
   lpinyin: ^2.0.3
   meta_seo: ^3.0.9
   shadcn_ui: ^0.4.7
+  shared_preferences: ^2.2.3
   url_launcher: ^6.2.6
   xml: ^6.5.0
 
