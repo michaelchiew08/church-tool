@@ -75,8 +75,11 @@ class ChurchTool extends ConsumerWidget {
                   case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:
-                  default:
                     return const SampleItemListView();
+                  case PinyinConverterScreen.routeName:
+                    return const PinyinConverterScreen();
+                  default:
+                    return const PinyinConverterScreen();
                 }
               },
             );

@@ -14,7 +14,7 @@ class SampleItemListView extends StatelessWidget {
     ],
   });
 
-  static const routeName = '/';
+  static const routeName = '/sample-item-list';
 
   final List<SampleItem> items;
 
@@ -42,7 +42,23 @@ class SampleItemListView extends StatelessWidget {
       // In contrast to the default ListView constructor, which requires
       // building all Widgets up front, the ListView.builder constructor lazily
       // builds Widgets as they’re scrolled into view.
-      body: ListView.builder(
+      body: ItemListView(items: items),
+    );
+  }
+}
+
+class ItemListView extends StatelessWidget {
+  const ItemListView({
+    required this.items,
+    super.key,
+  });
+
+  final List<SampleItem> items;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
         // Providing a restorationId allows the ListView to restore the
         // scroll position when a user leaves and returns to the app after it
         // has been killed while running in the background.
