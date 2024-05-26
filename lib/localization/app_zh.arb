@@ -31,7 +31,7 @@
   "@settingsThemeSystem": {
     "description": ""
   },
-  "settingsThemeLight": "光明主题",
+  "settingsThemeLight": "白天主题",
   "@settingsThemeLight": {
     "description": ""
   },

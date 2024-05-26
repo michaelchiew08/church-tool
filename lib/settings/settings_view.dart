@@ -73,7 +73,7 @@ class SettingsView extends StatelessWidget {
                   items: const [
                     DropdownMenuItem(
                       value: Locale('zh'),
-                      child: Text('Simplified Chinese 简体中文'),
+                      child: Text('简体中文'),
                     ),
                     DropdownMenuItem(
                       value: Locale('en'),
