@@ -81,7 +81,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
               ),
               TextField(
                 key: UniqueKey(),
-                maxLines: 10,
+                maxLines: 6,
                 keyboardType: TextInputType.multiline,
                 controller: newTextFieldArea,
                 decoration: InputDecoration(
