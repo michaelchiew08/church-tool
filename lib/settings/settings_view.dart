@@ -1,3 +1,4 @@
+import 'package:church_tool/app/base_scaffold.dart';
 import 'package:church_tool/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,15 +8,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
 class SettingsView extends StatelessWidget {
-  const SettingsView({required this.controller, super.key});
+  const SettingsView({required this.settingsController, super.key});
 
   static const routeName = '/settings';
 
-  final SettingsController controller;
+  final SettingsController settingsController;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScaffold(
+      settingsController: settingsController,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settingsTitle),
       ),
@@ -34,22 +36,28 @@ class SettingsView extends StatelessWidget {
                 Text(AppLocalizations.of(context)!.settingsThemeTitle),
                 DropdownButton<ThemeMode>(
                   // Read the selected themeMode from the controller
-                  value: controller.themeMode,
+                  value: settingsController.themeMode,
                   // Call the updateThemeMode method any time the user selects
                   // a theme.
-                  onChanged: controller.updateThemeMode,
-                  items: const [
+                  onChanged: settingsController.updateThemeMode,
+                  items: [
                     DropdownMenuItem(
                       value: ThemeMode.system,
-                      child: Text('System Theme'),
+                      child: Text(
+                        AppLocalizations.of(context)!.settingsThemeSystem,
+                      ),
                     ),
                     DropdownMenuItem(
                       value: ThemeMode.light,
-                      child: Text('Light Theme'),
+                      child: Text(
+                        AppLocalizations.of(context)!.settingsThemeLight,
+                      ),
                     ),
                     DropdownMenuItem(
                       value: ThemeMode.dark,
-                      child: Text('Dark Theme'),
+                      child: Text(
+                        AppLocalizations.of(context)!.settingsThemeDark,
+                      ),
                     ),
                   ],
                 ),
@@ -60,8 +68,8 @@ class SettingsView extends StatelessWidget {
               children: [
                 Text(AppLocalizations.of(context)!.settingsLanguageTitle),
                 DropdownButton<Locale>(
-                  value: controller.locale,
-                  onChanged: controller.updateLocale,
+                  value: settingsController.locale,
+                  onChanged: settingsController.updateLocale,
                   items: const [
                     DropdownMenuItem(
                       value: Locale('zh'),

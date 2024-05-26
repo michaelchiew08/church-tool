@@ -27,6 +27,18 @@
   "@settingsThemeTitle": {
     "description": "设定板的主题模式标题"
   },
+  "settingsThemeSystem": "系统主题",
+  "@settingsThemeSystem": {
+    "description": ""
+  },
+  "settingsThemeLight": "光明主题",
+  "@settingsThemeLight": {
+    "description": ""
+  },
+  "settingsThemeDark": "黑暗主题",
+  "@settingsThemeDark": {
+    "description": ""
+  },
   "settingsLanguageTitle": "语言",
   "@settingsLanguageTitle": {
     "description": "设定板的语言标题"

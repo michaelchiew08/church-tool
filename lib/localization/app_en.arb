@@ -27,6 +27,18 @@
   "@settingsThemeTitle": {
     "description": "The title of the settings screen theme"
   },
+  "settingsThemeSystem": "System Theme",
+  "@settingsThemeSystem": {
+    "description": ""
+  },
+  "settingsThemeLight": "Light Theme",
+  "@settingsThemeLight": {
+    "description": ""
+  },
+  "settingsThemeDark": "Dark Theme",
+  "@settingsThemeDark": {
+    "description": ""
+  },
   "settingsLanguageTitle": "Language",
   "@settingsLanguageTitle": {
     "description": "The title of the settings screen language"
