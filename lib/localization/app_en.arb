@@ -7,8 +7,16 @@
   "@homeTitle": {
     "description": "The title of the home screen"
   },
-  "converterTextField": "Enter your text here then click convert:",
+  "converterTextField": "Enter / paste your text here then click convert:",
   "@converterTextField": {
+    "description": ""
+  },
+  "gettingStartedText": "Getting Started",
+  "@gettingStartedText": {
+    "description": ""
+  },
+  "generateTextButton": "Generate Text",
+  "@generateTextButton": {
     "description": ""
   },
   "convertButton": "Convert",

@@ -50,11 +50,35 @@ class PinyinConverterScreen extends HookConsumerWidget {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(32),
+        padding: const EdgeInsets.all(16).copyWith(bottom: 24),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Row(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.gettingStartedText,
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
+                  const SizedBox(width: 12),
+                  ElevatedButton(
+                    onPressed: () {
+                      newTextFieldArea.text = notifier.respondWithSampleText();
+                    },
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.deepPurple),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)!.generateTextButton,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
               TextField(
                 key: UniqueKey(),
                 maxLines: 10,
@@ -79,7 +103,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.convertButton,
-                          style: const TextStyle(fontSize: 24),
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
@@ -92,7 +116,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.clearButton,
-                          style: const TextStyle(fontSize: 24),
+                          style: const TextStyle(fontSize: 20),
                         ),
                       ),
                     ),
