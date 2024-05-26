@@ -44,8 +44,10 @@ class ChurchTool extends ConsumerWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
+          locale: settingsController.locale,
           supportedLocales: const [
             Locale('en', ''), // English, no country code
+            Locale('zh', ''), // Chinese, no country code
           ],
 
           // Use AppLocalizations to configure the correct application title
@@ -77,9 +79,13 @@ class ChurchTool extends ConsumerWidget {
                   case SampleItemListView.routeName:
                     return const SampleItemListView();
                   case PinyinConverterScreen.routeName:
-                    return const PinyinConverterScreen();
+                    return PinyinConverterScreen(
+                      settingsController: settingsController,
+                    );
                   default:
-                    return const PinyinConverterScreen();
+                    return PinyinConverterScreen(
+                      settingsController: settingsController,
+                    );
                 }
               },
             );

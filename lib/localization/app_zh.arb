@@ -1,0 +1,38 @@
+{
+  "appTitle": "教会工具",
+  "@appTitle": {
+    "description": "软件的标题"
+  },
+  "homeTitle": "中文拼音转换器",
+  "@homeTitle": {
+    "description": ""
+  },
+  "converterTextField": "请在这里输入文字再点击转换：",
+  "@converterTextField": {
+    "description": ""
+  },
+  "convertButton": "转换",
+  "@convertButton": {
+    "description": ""
+  },
+  "clearButton": "清除",
+  "@clearButton": {
+    "description": ""
+  },
+  "settingsTitle": "设定",
+  "@settingsTitle": {
+    "description": "设定板的标题"
+  },
+  "settingsThemeTitle": "主题模式",
+  "@settingsThemeTitle": {
+    "description": "设定板的主题模式标题"
+  },
+  "settingsLanguageTitle": "语言",
+  "@settingsLanguageTitle": {
+    "description": "设定板的语言标题"
+  },
+  "madeWithLoveText": " 的 ❤️ 制作",
+  "@madeWithLoveText": {
+    "description": ""
+  }
+}

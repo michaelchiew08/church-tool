@@ -1,6 +1,7 @@
 import 'package:church_tool/features/features.dart';
 import 'package:church_tool/settings/settings_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 /// Displays a list of SampleItems.
 class SampleItemListView extends StatelessWidget {
@@ -26,6 +27,7 @@ class SampleItemListView extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
+            tooltip: AppLocalizations.of(context)!.settingsTitle,
             onPressed: () {
               // Navigate to the settings page. If the user leaves and returns
               // to the app after it has been killed while running in the

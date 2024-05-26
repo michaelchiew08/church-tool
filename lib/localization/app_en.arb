@@ -2,5 +2,37 @@
   "appTitle": "Church Tool",
   "@appTitle": {
     "description": "The title of the application"
+  },
+  "homeTitle": "Chinese Pinyin Converter",
+  "@homeTitle": {
+    "description": "The title of the home screen"
+  },
+  "converterTextField": "Enter your text here then click convert:",
+  "@converterTextField": {
+    "description": ""
+  },
+  "convertButton": "Convert",
+  "@convertButton": {
+    "description": ""
+  },
+  "clearButton": "Clear",
+  "@clearButton": {
+    "description": ""
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "The title of the settings screen"
+  },
+  "settingsThemeTitle": "Theme",
+  "@settingsThemeTitle": {
+    "description": "The title of the settings screen theme"
+  },
+  "settingsLanguageTitle": "Language",
+  "@settingsLanguageTitle": {
+    "description": "The title of the settings screen language"
+  },
+  "madeWithLoveText": "Made with ❤️ by ",
+  "@madeWithLoveText": {
+    "description": ""
   }
 }
