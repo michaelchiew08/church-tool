@@ -7,7 +7,7 @@
   "@homeTitle": {
     "description": ""
   },
-  "converterTextField": "在这里输入文字或复制文章再点击转换：",
+  "converterTextField": "在这里输入文字或粘贴文字再点击转换：",
   "@converterTextField": {
     "description": ""
   },
@@ -15,7 +15,7 @@
   "@gettingStartedText": {
     "description": ""
   },
-  "generateTextButton": "复制文字",
+  "generateTextButton": "生成文字样本",
   "@generateTextButton": {
     "description": ""
   },

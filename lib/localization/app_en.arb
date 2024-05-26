@@ -15,7 +15,7 @@
   "@gettingStartedText": {
     "description": ""
   },
-  "generateTextButton": "Generate Text",
+  "generateTextButton": "Generate Sample Text",
   "@generateTextButton": {
     "description": ""
   },

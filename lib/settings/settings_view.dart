@@ -21,71 +21,89 @@ class SettingsView extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settingsTitle),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        // Glue the SettingsController to the theme selection DropdownButton.
-        //
-        // When a user selects a theme from the dropdown list, the
-        // SettingsController is updated, which rebuilds the MaterialApp.
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(AppLocalizations.of(context)!.settingsThemeTitle),
-                DropdownButton<ThemeMode>(
-                  // Read the selected themeMode from the controller
-                  value: settingsController.themeMode,
-                  // Call the updateThemeMode method any time the user selects
-                  // a theme.
-                  onChanged: settingsController.updateThemeMode,
-                  items: [
-                    DropdownMenuItem(
-                      value: ThemeMode.system,
-                      child: Text(
-                        AppLocalizations.of(context)!.settingsThemeSystem,
-                      ),
-                    ),
-                    DropdownMenuItem(
-                      value: ThemeMode.light,
-                      child: Text(
-                        AppLocalizations.of(context)!.settingsThemeLight,
-                      ),
-                    ),
-                    DropdownMenuItem(
-                      value: ThemeMode.dark,
-                      child: Text(
-                        AppLocalizations.of(context)!.settingsThemeDark,
-                      ),
-                    ),
-                  ],
+      body: ListView(
+        children: [
+          CustomListTile(
+            title: AppLocalizations.of(context)!.settingsThemeTitle,
+            leading: const Icon(Icons.contrast),
+            trailing: DropdownButton<ThemeMode>(
+              // Read the selected themeMode from the controller
+              value: settingsController.themeMode,
+              // Call the updateThemeMode method any time the user selects
+              // a theme.
+              onChanged: settingsController.updateThemeMode,
+              items: [
+                DropdownMenuItem(
+                  value: ThemeMode.system,
+                  child: Text(
+                    AppLocalizations.of(context)!.settingsThemeSystem,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.light,
+                  child: Text(
+                    AppLocalizations.of(context)!.settingsThemeLight,
+                  ),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.dark,
+                  child: Text(
+                    AppLocalizations.of(context)!.settingsThemeDark,
+                  ),
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(AppLocalizations.of(context)!.settingsLanguageTitle),
-                DropdownButton<Locale>(
-                  value: settingsController.locale,
-                  onChanged: settingsController.updateLocale,
-                  items: const [
-                    DropdownMenuItem(
-                      value: Locale('zh'),
-                      child: Text('简体中文'),
-                    ),
-                    DropdownMenuItem(
-                      value: Locale('en'),
-                      child: Text('English'),
-                    ),
-                  ],
+          ),
+          CustomListTile(
+            title: AppLocalizations.of(context)!.settingsLanguageTitle,
+            leading: const Icon(Icons.translate),
+            trailing: DropdownButton<Locale>(
+              value: settingsController.locale,
+              onChanged: settingsController.updateLocale,
+              items: const [
+                DropdownMenuItem(
+                  value: Locale('zh'),
+                  child: Text('简体中文'),
+                ),
+                DropdownMenuItem(
+                  value: Locale('en'),
+                  child: Text('English'),
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class CustomListTile extends StatelessWidget {
+  const CustomListTile({
+    required this.title,
+    required this.trailing,
+    this.subtitle,
+    this.leading,
+    super.key,
+  });
+
+  final String title;
+  final Widget trailing;
+  final String? subtitle;
+  final Icon? leading;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: leading,
+      title: Text(title),
+      subtitle: subtitle == null
+          ? null
+          : Text(
+              subtitle!,
+              style: const TextStyle(fontSize: 12),
+            ),
+      trailing: trailing,
     );
   }
 }

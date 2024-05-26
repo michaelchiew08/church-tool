@@ -123,7 +123,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-              Text(state),
+              SelectableText(state),
             ],
           ),
         ),
