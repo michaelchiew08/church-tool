@@ -56,6 +56,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
                     AppLocalizations.of(context)!.gettingStartedText,
