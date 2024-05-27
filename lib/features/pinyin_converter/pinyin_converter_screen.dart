@@ -50,7 +50,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
         ],
       ),
       body: Container(
-        padding: const EdgeInsets.all(16).copyWith(bottom: 24),
+        padding: const EdgeInsets.all(16).copyWith(bottom: 24, top: 8),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,6 +80,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
               TextField(
                 key: UniqueKey(),
                 maxLines: 6,

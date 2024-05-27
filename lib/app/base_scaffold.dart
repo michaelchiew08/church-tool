@@ -1,12 +1,11 @@
 import 'package:church_tool/settings/settings_controller.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-/// [BaseScaffold] replaces the Flutter Scaffold, but includes all Flutter
-/// Scaffold Properites.
+/// [BaseScaffold] to replaces the Flutter Scaffold, but includes all Flutter
+/// Scaffold properites by allowing customization.
 class BaseScaffold extends StatelessWidget {
   const BaseScaffold({
     required this.settingsController,
@@ -35,7 +34,6 @@ class BaseScaffold extends StatelessWidget {
     this.endDrawerEnableOpenDragGesture = true,
     this.restorationId,
     this.isFooterEnabled = false,
-    this.onWillPop,
     this.useSafeArea = false,
     this.canPop = true,
   });
@@ -64,7 +62,6 @@ class BaseScaffold extends StatelessWidget {
   final bool endDrawerEnableOpenDragGesture;
   final String? restorationId;
   final bool isFooterEnabled;
-  final AsyncValueGetter<bool>? onWillPop;
   final bool useSafeArea;
   final bool? canPop;
 
