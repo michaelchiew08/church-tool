@@ -125,22 +125,73 @@ class PinyinConverterScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-              SelectableText(
-                state,
-                contextMenuBuilder: (context, editableTextState) {
-                  return AdaptiveTextSelectionToolbar.buttonItems(
-                    anchors: editableTextState.contextMenuAnchors,
-                    buttonItems: editableTextState.contextMenuButtonItems
-                      ..removeWhere(
-                        (ContextMenuButtonItem buttonItem) =>
-                            buttonItem.type == ContextMenuButtonType.cut,
-                      ),
-                  );
-                },
+              // SelectableText(
+              //   state,
+              //   contextMenuBuilder: (context, editableTextState) {
+              //     return AdaptiveTextSelectionToolbar.buttonItems(
+              //       anchors: editableTextState.contextMenuAnchors,
+              //       buttonItems: editableTextState.contextMenuButtonItems
+              //         ..removeWhere(
+              //           (ContextMenuButtonItem buttonItem) =>
+              //               buttonItem.type == ContextMenuButtonType.cut,
+              //         ),
+              //     );
+              //   },
+              // ),
+              SelectionArea(
+                child: Text(state),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CostumeSelectionToolbar extends TextSelectionToolbar {
+  const CostumeSelectionToolbar({
+    required super.anchorAbove,
+    required super.anchorBelow,
+    required super.children,
+    super.key,
+  });
+
+  static const double _kToolbarScreenPadding = 8.0;
+  static const double _kToolbarHeight = 275.0;
+  @override
+  Widget build(BuildContext context) {
+    final double paddingAbove =
+        MediaQuery.of(context).padding.top + _kToolbarScreenPadding;
+    final double availableHeight = anchorAbove.dy - paddingAbove;
+    final bool fitsAbove = _kToolbarHeight <= availableHeight;
+    final Offset localAdjustment = Offset(_kToolbarScreenPadding, paddingAbove);
+
+    return Padding(
+      padding: EdgeInsets.fromLTRB(
+        _kToolbarScreenPadding,
+        paddingAbove,
+        _kToolbarScreenPadding,
+        _kToolbarScreenPadding,
+      ),
+      child: Stack(
+        children: <Widget>[
+          CustomSingleChildLayout(
+            delegate: TextSelectionToolbarLayoutDelegate(
+              anchorAbove: anchorAbove - localAdjustment,
+              anchorBelow: anchorBelow - localAdjustment,
+              fitsAbove: fitsAbove,
+            ),
+            child: SizedBox(
+              width: 230,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: children,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
