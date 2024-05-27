@@ -19,6 +19,18 @@
   "@generateTextButton": {
     "description": ""
   },
+  "pinyinWithoutTone": "不带声调",
+  "@pinyinWithoutTone": {
+    "description": ""
+  },
+  "pinyinWithTone": "带声调",
+  "@pinyinWithTone": {
+    "description": ""
+  },
+  "pinyinWithToneNumber": "带数字声调",
+  "@pinyinWithToneNumber": {
+    "description": ""
+  },
   "convertButton": "转换",
   "@convertButton": {
     "description": ""

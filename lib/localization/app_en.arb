@@ -19,6 +19,18 @@
   "@generateTextButton": {
     "description": ""
   },
+  "pinyinWithoutTone": "Without Tone",
+  "@pinyinWithoutTone": {
+    "description": ""
+  },
+  "pinyinWithTone": "With Tone",
+  "@pinyinWithTone": {
+    "description": ""
+  },
+  "pinyinWithToneNumber": "With Tone Number",
+  "@pinyinWithToneNumber": {
+    "description": ""
+  },
   "convertButton": "Convert",
   "@convertButton": {
     "description": ""

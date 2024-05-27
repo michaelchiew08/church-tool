@@ -91,7 +91,9 @@ class PinyinConverterScreen extends HookConsumerWidget {
                   labelStyle: const TextStyle(height: 0),
                 ),
               ),
-              const SizedBox(),
+              const SizedBox(height: 40),
+              const Center(child: PinyinChoiceSegmentedButton()),
+              const SizedBox(height: 20),
               Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(16),
@@ -125,19 +127,6 @@ class PinyinConverterScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-              // SelectableText(
-              //   state,
-              //   contextMenuBuilder: (context, editableTextState) {
-              //     return AdaptiveTextSelectionToolbar.buttonItems(
-              //       anchors: editableTextState.contextMenuAnchors,
-              //       buttonItems: editableTextState.contextMenuButtonItems
-              //         ..removeWhere(
-              //           (ContextMenuButtonItem buttonItem) =>
-              //               buttonItem.type == ContextMenuButtonType.cut,
-              //         ),
-              //     );
-              //   },
-              // ),
               SelectionArea(
                 child: Text(state),
               ),
@@ -149,50 +138,39 @@ class PinyinConverterScreen extends HookConsumerWidget {
   }
 }
 
-class CostumeSelectionToolbar extends TextSelectionToolbar {
-  const CostumeSelectionToolbar({
-    required super.anchorAbove,
-    required super.anchorBelow,
-    required super.children,
-    super.key,
-  });
+class PinyinChoiceSegmentedButton extends StatefulHookConsumerWidget {
+  const PinyinChoiceSegmentedButton({super.key});
 
-  static const double _kToolbarScreenPadding = 8.0;
-  static const double _kToolbarHeight = 275.0;
+  @override
+  ConsumerState<PinyinChoiceSegmentedButton> createState() =>
+      _SingleChoiceState();
+}
+
+class _SingleChoiceState extends ConsumerState<PinyinChoiceSegmentedButton> {
+  PinyinFormatType pinyinFormatTypeView = PinyinFormatType.withoutTone;
+
   @override
   Widget build(BuildContext context) {
-    final double paddingAbove =
-        MediaQuery.of(context).padding.top + _kToolbarScreenPadding;
-    final double availableHeight = anchorAbove.dy - paddingAbove;
-    final bool fitsAbove = _kToolbarHeight <= availableHeight;
-    final Offset localAdjustment = Offset(_kToolbarScreenPadding, paddingAbove);
+    final notifier = ref.watch(pinyinToneNotifierProvider.notifier);
+    final state = ref.watch(pinyinToneNotifierProvider);
 
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        _kToolbarScreenPadding,
-        paddingAbove,
-        _kToolbarScreenPadding,
-        _kToolbarScreenPadding,
-      ),
-      child: Stack(
-        children: <Widget>[
-          CustomSingleChildLayout(
-            delegate: TextSelectionToolbarLayoutDelegate(
-              anchorAbove: anchorAbove - localAdjustment,
-              anchorBelow: anchorBelow - localAdjustment,
-              fitsAbove: fitsAbove,
-            ),
-            child: SizedBox(
-              width: 230,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children,
-              ),
-            ),
-          ),
-        ],
-      ),
+    return SegmentedButton<PinyinFormatType>(
+      segments: <ButtonSegment<PinyinFormatType>>[
+        ButtonSegment<PinyinFormatType>(
+          value: PinyinFormatType.withoutTone,
+          label: Text(AppLocalizations.of(context)!.pinyinWithoutTone),
+        ),
+        ButtonSegment<PinyinFormatType>(
+          value: PinyinFormatType.withToneMark,
+          label: Text(AppLocalizations.of(context)!.pinyinWithTone),
+        ),
+        ButtonSegment<PinyinFormatType>(
+          value: PinyinFormatType.withToneNumber,
+          label: Text(AppLocalizations.of(context)!.pinyinWithToneNumber),
+        ),
+      ],
+      selected: <PinyinFormatType>{state},
+      onSelectionChanged: notifier.respondPinyinFormatType,
     );
   }
 }
