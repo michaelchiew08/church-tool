@@ -19,7 +19,7 @@
   "@generateTextButton": {
     "description": ""
   },
-  "pinyinWithoutTone": "不带声调",
+  "pinyinWithoutTone": "无声调",
   "@pinyinWithoutTone": {
     "description": ""
   },
