@@ -39,6 +39,18 @@
     // The value below is injected by flutter build, do not touch.
     const serviceWorkerVersion = null;
   </script>
+
+  <!-- This is using Flutter web version of Amplitude Analytics -->
+  <script src="https://cdn.amplitude.com/libs/analytics-browser-2.7.3-min.js.gz"></script>
+
+  <script src="https://cdn.amplitude.com/libs/plugin-session-replay-browser-1.2.3-min.js.gz"></script>
+  
+  <script src="https://cdn.amplitude.com/libs/plugin-autocapture-browser-0.9.0-min.js.gz"></script>
+  
+  <script>
+    window.amplitude.add(window.sessionReplay.plugin({sampleRate: 1})).promise.then(function() {window.amplitude.add(window.amplitudeAutocapturePlugin.plugin());window.amplitude.init('bc5e3512a878d6c5a82ad4f1089a784b');});
+  </script>
+
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>

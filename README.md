@@ -25,6 +25,8 @@ images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-awa
 This project generates localized messages based on arb files found in
 the `lib/localization` directory.
 
+Run `flutter gen-l10n` for regeneration.
+
 To support additional languages, please visit the tutorial on
 [Internationalizing Flutter
 apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
