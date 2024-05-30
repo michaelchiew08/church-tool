@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:posthog_flutter/posthog_flutter.dart';
 
 /// The Widget that configures your application.
 class ChurchTool extends ConsumerWidget {
@@ -26,6 +27,10 @@ class ChurchTool extends ConsumerWidget {
       listenable: settingsController,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          navigatorObservers: [
+            // The PosthogObserver records screen views automatically
+            PosthogObserver(),
+          ],
           // Hide the debug banner on the right.
           debugShowCheckedModeBanner: false,
 

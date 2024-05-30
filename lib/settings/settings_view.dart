@@ -2,6 +2,7 @@ import 'package:church_tool/app/base_scaffold.dart';
 import 'package:church_tool/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:posthog_flutter/posthog_flutter.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
@@ -104,6 +105,14 @@ class CustomListTile extends StatelessWidget {
               style: const TextStyle(fontSize: 12),
             ),
       trailing: trailing,
+      onTap: () {
+        Posthog().capture(
+          eventName: 'title',
+          properties: {
+            'clicked': true,
+          },
+        );
+      },
     );
   }
 }

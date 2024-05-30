@@ -20,6 +20,7 @@ dependencies:
   hooks_riverpod: ^2.5.1
   lpinyin: ^2.0.3
   meta_seo: ^3.0.9
+  posthog_flutter: ^4.5.0
   shadcn_ui: ^0.4.7
   shared_preferences: ^2.2.3
   url_launcher: ^6.2.6
