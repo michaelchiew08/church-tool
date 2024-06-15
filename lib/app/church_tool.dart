@@ -1,6 +1,6 @@
 import 'package:church_tool/features/features.dart';
 import 'package:church_tool/settings/settings_controller.dart';
-import 'package:church_tool/settings/settings_view.dart';
+import 'package:church_tool/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -77,8 +77,10 @@ class ChurchTool extends ConsumerWidget {
               settings: routeSettings,
               builder: (BuildContext context) {
                 switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView(settingsController: settingsController);
+                  case SettingsScreen.routeName:
+                    return SettingsScreen(
+                      settingsController: settingsController,
+                    );
                   case SampleItemDetailsView.routeName:
                     return const SampleItemDetailsView();
                   case SampleItemListView.routeName:

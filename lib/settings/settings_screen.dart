@@ -8,8 +8,8 @@ import 'package:posthog_flutter/posthog_flutter.dart';
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsView extends StatelessWidget {
-  const SettingsView({required this.settingsController, super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({required this.settingsController, super.key});
 
   static const routeName = '/settings';
 
