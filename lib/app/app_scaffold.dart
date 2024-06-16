@@ -37,15 +37,15 @@ class AppScaffold extends ConsumerWidget {
                 ],
               ),
             ),
-            floatingActionButton: (selectedSection == AppPage.pinyinConverter &&
-                    MediaQuery.viewInsetsOf(context).bottom == 0)
-                ? FloatingActionButton(
-                    key: const ValueKey('clearAll'),
-                    onPressed: () {},
-                    tooltip: 'Clear All',
-                    child: const Icon(Icons.clear_outlined),
-                  )
-                : null,
+            // floatingActionButton: (selectedSection == AppPage.pinyinConverter &&
+            //         MediaQuery.viewInsetsOf(context).bottom == 0)
+            //     ? FloatingActionButton(
+            //         key: const ValueKey('clearAll'),
+            //         onPressed: () {},
+            //         tooltip: 'Clear All',
+            //         child: const Icon(Icons.clear_outlined),
+            //       )
+            //     : null,
           );
         }
         // if the drawer is not fixed
@@ -60,43 +60,44 @@ class AppScaffold extends ConsumerWidget {
               //2 sided page
               if (_isDrawerFixed) {
                 context.goNamed('settings');
-              } else {
-                context.goNamed('reorder-units');
               }
+              // if (!_isDrawerFixed) {
+              //   context.goNamed('reorder-units');
+              // }
             }
           },
           child: Scaffold(
             // drawer: drawer,
             body: SafeArea(child: child),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.endContained,
-            bottomNavigationBar: selectedSection == AppPage.pinyinConverter
-                ? BottomAppBar(
-                    child: Row(
-                      children: [
-                        IconButton(
-                          tooltip: 'Search',
-                          icon: const Icon(Icons.search),
-                          onPressed: () {},
-                        ),
-                        IconButton(
-                          tooltip: 'Calculator',
-                          icon: const Icon(Icons.calculate_outlined),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                  )
-                : null,
-            floatingActionButton: (selectedSection == AppPage.pinyinConverter &&
-                    MediaQuery.viewInsetsOf(context).bottom == 0)
-                ? FloatingActionButton(
-                    key: const ValueKey('clearAll'),
-                    onPressed: () {},
-                    tooltip: 'Clear All',
-                    child: const Icon(Icons.clear_outlined),
-                  )
-                : null,
+            // floatingActionButtonLocation:
+            //     FloatingActionButtonLocation.endContained,
+            // bottomNavigationBar: selectedSection == AppPage.pinyinConverter
+            //     ? BottomAppBar(
+            //         child: Row(
+            //           children: [
+            //             IconButton(
+            //               tooltip: 'Search',
+            //               icon: const Icon(Icons.search),
+            //               onPressed: () {},
+            //             ),
+            //             IconButton(
+            //               tooltip: 'Calculator',
+            //               icon: const Icon(Icons.calculate_outlined),
+            //               onPressed: () {},
+            //             ),
+            //           ],
+            //         ),
+            //       )
+            //     : null,
+            // floatingActionButton: (selectedSection == AppPage.pinyinConverter &&
+            //         MediaQuery.viewInsetsOf(context).bottom == 0)
+            //     ? FloatingActionButton(
+            //         key: const ValueKey('clearAll'),
+            //         onPressed: () {},
+            //         tooltip: 'Clear All',
+            //         child: const Icon(Icons.clear_outlined),
+            //       )
+            //     : null,
           ),
         );
       },

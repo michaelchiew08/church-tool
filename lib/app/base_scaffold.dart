@@ -109,7 +109,8 @@ class CustomBottomSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsLocale =
-        ref.watch(CurrentLocaleNotifier.provider).valueOrNull;
+        ref.read(CurrentLocaleNotifier.provider).valueOrNull ??
+            const Locale('zh');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -120,7 +121,7 @@ class CustomBottomSheet extends ConsumerWidget {
               text: '',
               style: Theme.of(context).textTheme.bodySmall,
               children: <InlineSpan>[
-                if (settingsLocale?.languageCode == 'en')
+                if (settingsLocale.languageCode == 'en')
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,
@@ -134,7 +135,7 @@ class CustomBottomSheet extends ConsumerWidget {
                     url: 'https://github.com/michaelchiew08',
                   ),
                 ),
-                if (settingsLocale?.languageCode == 'zh')
+                if (settingsLocale.languageCode == 'zh')
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,
