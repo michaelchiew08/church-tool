@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:universal_io/io.dart';
+// import 'package:universal_io/io.dart';
 // import 'package:posthog_flutter/posthog_flutter.dart';
 
 /// The Widget that configures your application.
@@ -23,15 +23,11 @@ class ChurchTool extends ConsumerWidget {
         final settingsLocale =
             ref.watch(CurrentLocaleNotifier.provider).valueOrNull;
 
-        final deviceLocaleLanguageCode = Platform.localeName.split('_')[0];
+        // final deviceLocaleLanguageCode = Platform.localeName.split('_')[0];
         Locale appLocale;
 
         if (settingsLocale != null) {
           appLocale = settingsLocale;
-        } else if (mapLocale.keys
-            .map((Locale locale) => locale.languageCode)
-            .contains(deviceLocaleLanguageCode)) {
-          appLocale = Locale(deviceLocaleLanguageCode);
         } else {
           appLocale = const Locale('zh');
         }

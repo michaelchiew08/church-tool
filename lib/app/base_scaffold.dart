@@ -109,7 +109,7 @@ class CustomBottomSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsLocale =
-        ref.read(CurrentLocaleNotifier.provider).valueOrNull ??
+        ref.watch(CurrentLocaleNotifier.provider).valueOrNull ??
             const Locale('zh');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
