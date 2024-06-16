@@ -1,14 +1,14 @@
-import 'package:church_tool/settings/settings_controller.dart';
+import 'package:church_tool/settings/settings.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// [BaseScaffold] to replaces the Flutter Scaffold, but includes all Flutter
 /// Scaffold properites by allowing customization.
 class BaseScaffold extends StatelessWidget {
   const BaseScaffold({
-    required this.settingsController,
     super.key,
     this.appBar,
     this.body,
@@ -65,8 +65,6 @@ class BaseScaffold extends StatelessWidget {
   final bool useSafeArea;
   final bool? canPop;
 
-  final SettingsController settingsController;
-
   @override
   Widget build(BuildContext context) {
     return useSafeArea ? SafeArea(child: _scaffold) : _scaffold;
@@ -88,9 +86,7 @@ class BaseScaffold extends StatelessWidget {
         endDrawer: endDrawer,
         onEndDrawerChanged: onEndDrawerChanged,
         bottomNavigationBar: bottomNavigationBar,
-        bottomSheet: CustomBottomSheet(
-          settingsController: settingsController,
-        ),
+        bottomSheet: const CustomBottomSheet(),
         backgroundColor: backgroundColor,
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         primary: primary,
@@ -107,16 +103,13 @@ class BaseScaffold extends StatelessWidget {
   }
 }
 
-class CustomBottomSheet extends StatelessWidget {
-  const CustomBottomSheet({
-    required this.settingsController,
-    super.key,
-  });
-
-  final SettingsController settingsController;
+class CustomBottomSheet extends ConsumerWidget {
+  const CustomBottomSheet({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settingsLocale =
+        ref.watch(CurrentLocaleNotifier.provider).valueOrNull;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -127,7 +120,7 @@ class CustomBottomSheet extends StatelessWidget {
               text: '',
               style: Theme.of(context).textTheme.bodySmall,
               children: <InlineSpan>[
-                if (settingsController.locale.languageCode == 'en')
+                if (settingsLocale?.languageCode == 'en')
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,
@@ -141,7 +134,7 @@ class CustomBottomSheet extends StatelessWidget {
                     url: 'https://github.com/michaelchiew08',
                   ),
                 ),
-                if (settingsController.locale.languageCode == 'zh')
+                if (settingsLocale?.languageCode == 'zh')
                   WidgetSpan(
                     alignment: PlaceholderAlignment.baseline,
                     baseline: TextBaseline.alphabetic,

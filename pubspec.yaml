@@ -23,6 +23,7 @@ dependencies:
   posthog_flutter: ^4.5.0
   shadcn_ui: ^0.4.7
   shared_preferences: ^2.2.3
+  universal_io: ^2.2.2
   url_launcher: ^6.2.6
   xml: ^6.5.0
 

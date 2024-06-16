@@ -1,24 +1,28 @@
 import 'package:church_tool/app/base_scaffold.dart';
-import 'package:church_tool/settings/settings_controller.dart';
+import 'package:church_tool/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:posthog_flutter/posthog_flutter.dart';
 
 /// Displays the various settings that can be customized by the user.
 ///
 /// When a user changes a setting, the SettingsController is updated and
 /// Widgets that listen to the SettingsController are rebuilt.
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({required this.settingsController, super.key});
+class SettingsScreen extends ConsumerWidget {
+  const SettingsScreen({super.key});
 
   static const routeName = '/settings';
 
-  final SettingsController settingsController;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mapTheme = {
+      ThemeMode.system: ThemeMode.system,
+      ThemeMode.dark: ThemeMode.dark,
+      ThemeMode.light: ThemeMode.light,
+    };
+
     return BaseScaffold(
-      settingsController: settingsController,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settingsTitle),
       ),
@@ -29,10 +33,18 @@ class SettingsScreen extends StatelessWidget {
             leading: const Icon(Icons.contrast),
             trailing: DropdownButton<ThemeMode>(
               // Read the selected themeMode from the controller
-              value: settingsController.themeMode,
+              value: mapTheme[
+                  ref.watch(CurrentThemeModeNotifier.provider).valueOrNull ??
+                      0],
               // Call the updateThemeMode method any time the user selects
               // a theme.
-              onChanged: settingsController.updateThemeMode,
+              onChanged: (ThemeMode? themeMode) {
+                ref.read(CurrentThemeModeNotifier.provider.notifier).set(
+                      mapTheme.keys
+                          .where((key) => mapTheme[key] == themeMode)
+                          .single,
+                    );
+              },
               items: [
                 DropdownMenuItem(
                   value: ThemeMode.system,
@@ -59,8 +71,19 @@ class SettingsScreen extends StatelessWidget {
             title: AppLocalizations.of(context)!.settingsLanguageTitle,
             leading: const Icon(Icons.translate),
             trailing: DropdownButton<Locale>(
-              value: settingsController.locale,
-              onChanged: settingsController.updateLocale,
+              value: ref.watch(CurrentLocaleNotifier.provider).valueOrNull ??
+                  const Locale('zh'),
+              onChanged: (Locale? locale) {
+                if (locale != null) {
+                  ref.read(CurrentLocaleNotifier.provider.notifier).set(
+                        mapLocale.keys
+                            .where(
+                              (key) => mapLocale[key] == locale.languageCode,
+                            )
+                            .single,
+                      );
+                }
+              },
               items: const [
                 DropdownMenuItem(
                   value: Locale('zh'),

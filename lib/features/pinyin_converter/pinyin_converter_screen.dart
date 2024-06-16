@@ -1,23 +1,20 @@
 import 'package:church_tool/app/base_scaffold.dart';
 import 'package:church_tool/features/pinyin_converter/pinyin_converter.dart';
 import 'package:church_tool/features/pinyin_converter/pinyin_converter_notifier.dart';
-import 'package:church_tool/settings/settings_controller.dart';
 // import 'package:church_tool/features/sample_feature/sample_item_list_view.dart';
-import 'package:church_tool/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PinyinConverterScreen extends HookConsumerWidget {
   const PinyinConverterScreen({
-    required this.settingsController,
     super.key,
   });
 
   static const routeName = '/';
-  final SettingsController settingsController;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -27,7 +24,6 @@ class PinyinConverterScreen extends HookConsumerWidget {
     final newTextFieldArea = useTextEditingController();
 
     return BaseScaffold(
-      settingsController: settingsController,
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.homeTitle),
         actions: [
@@ -44,7 +40,7 @@ class PinyinConverterScreen extends HookConsumerWidget {
             icon: const Icon(Icons.settings),
             tooltip: AppLocalizations.of(context)!.settingsTitle,
             onPressed: () {
-              Navigator.restorablePushNamed(context, SettingsScreen.routeName);
+              context.go('/settings');
             },
           ),
         ],
