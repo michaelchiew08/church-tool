@@ -12,8 +12,6 @@ import 'package:posthog_flutter/posthog_flutter.dart';
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
-  static const routeName = '/settings';
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mapTheme = {

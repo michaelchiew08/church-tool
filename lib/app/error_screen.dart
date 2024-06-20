@@ -12,7 +12,7 @@ class ErrorScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Error one',
+              'Error Screen',
               style: TextStyle(fontSize: 30),
             ),
             const SizedBox(

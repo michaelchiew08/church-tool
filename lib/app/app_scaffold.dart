@@ -1,4 +1,5 @@
 import 'package:church_tool/app/app.dart';
+import 'package:church_tool/app/custom_drawer.dart';
 import 'package:church_tool/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,18 +22,17 @@ class AppScaffold extends ConsumerWidget {
 
         final selectedSection = computeSelectedSection(context);
 
-        // final drawer = CustomDrawer(
-        //   isDrawerFixed: _isDrawerFixed,
-        //   openCalculator: openCalculator,
-        //   openSearch: openSearch,
-        // );
+        final drawer = CustomDrawer(
+          isDrawerFixed: _isDrawerFixed,
+          openSearch: () {},
+        );
 
         if (_isDrawerFixed) {
           return Scaffold(
             body: SafeArea(
               child: Row(
                 children: <Widget>[
-                  // drawer,
+                  drawer,
                   Expanded(child: child),
                 ],
               ),
@@ -67,28 +67,23 @@ class AppScaffold extends ConsumerWidget {
             }
           },
           child: Scaffold(
-            // drawer: drawer,
+            drawer: drawer,
             body: SafeArea(child: child),
-            // floatingActionButtonLocation:
-            //     FloatingActionButtonLocation.endContained,
-            // bottomNavigationBar: selectedSection == AppPage.pinyinConverter
-            //     ? BottomAppBar(
-            //         child: Row(
-            //           children: [
-            //             IconButton(
-            //               tooltip: 'Search',
-            //               icon: const Icon(Icons.search),
-            //               onPressed: () {},
-            //             ),
-            //             IconButton(
-            //               tooltip: 'Calculator',
-            //               icon: const Icon(Icons.calculate_outlined),
-            //               onPressed: () {},
-            //             ),
-            //           ],
-            //         ),
-            //       )
-            //     : null,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.endContained,
+            bottomNavigationBar: selectedSection == AppPage.pinyinConverter
+                ? BottomAppBar(
+                    child: Row(
+                      children: [
+                        IconButton(
+                          tooltip: 'Search',
+                          icon: const Icon(Icons.search),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  )
+                : null,
             // floatingActionButton: (selectedSection == AppPage.pinyinConverter &&
             //         MediaQuery.viewInsetsOf(context).bottom == 0)
             //     ? FloatingActionButton(

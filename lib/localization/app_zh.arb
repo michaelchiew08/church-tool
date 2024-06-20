@@ -43,6 +43,10 @@
   "@settingsTitle": {
     "description": "设定板的标题"
   },
+  "searchTitle": "搜索",
+  "@searchTitle": {
+    "description": ""
+  },
   "settingsThemeTitle": "主题模式",
   "@settingsThemeTitle": {
     "description": "设定板的主题模式标题"

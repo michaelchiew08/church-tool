@@ -1,12 +1,9 @@
 import 'package:church_tool/app/base_scaffold.dart';
 import 'package:church_tool/features/pinyin_converter/pinyin_converter.dart';
 import 'package:church_tool/features/pinyin_converter/pinyin_converter_notifier.dart';
-// import 'package:church_tool/features/sample_feature/sample_item_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class PinyinConverterScreen extends HookConsumerWidget {
@@ -26,24 +23,6 @@ class PinyinConverterScreen extends HookConsumerWidget {
     return BaseScaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.homeTitle),
-        actions: [
-          // IconButton(
-          //   icon: const Icon(Icons.list),
-          //   onPressed: () {
-          //     Navigator.restorablePushNamed(
-          //       context,
-          //       SampleItemListView.routeName,
-          //     );
-          //   },
-          // ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            tooltip: AppLocalizations.of(context)!.settingsTitle,
-            onPressed: () {
-              context.go('/settings');
-            },
-          ),
-        ],
       ),
       body: Container(
         padding: const EdgeInsets.all(16).copyWith(bottom: 24, top: 8),

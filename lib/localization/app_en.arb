@@ -43,6 +43,10 @@
   "@settingsTitle": {
     "description": "The title of the settings screen"
   },
+  "searchTitle": "Search",
+  "@searchTitle": {
+    "description": "The title of the search"
+  },
   "settingsThemeTitle": "Theme",
   "@settingsThemeTitle": {
     "description": "The title of the settings screen theme"

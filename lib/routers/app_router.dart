@@ -20,6 +20,7 @@ final routerProvider = Provider<GoRouter>(
         routes: [
           GoRoute(
             path: '/pinyin-converter',
+            name: 'pinyin-converter',
             pageBuilder: (context, state) {
               return const NoTransitionPage(
                 child: PinyinConverterScreen(),

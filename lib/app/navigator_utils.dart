@@ -9,18 +9,10 @@ AppPage computeSelectedSection(BuildContext context) {
   if (location.startsWith('/pinyin-converter/')) {
     return AppPage.pinyinConverter;
   }
-  if (location.startsWith('/settings/reorder-properties')) {
-    return AppPage.reorder;
-  }
-  if (location.startsWith('/settings/reorder-units/') &&
-      location.split('/')[3] != '') {
-    return AppPage.reorderDetails;
-  }
-  if (location.startsWith('/settings/reorder-units')) {
-    return AppPage.reorder;
-  }
+
   if (location.startsWith('/settings')) {
     return AppPage.settings;
   }
+
   return AppPage.pinyinConverter;
 }
