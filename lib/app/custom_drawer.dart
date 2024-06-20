@@ -37,12 +37,12 @@ class CustomDrawer extends ConsumerWidget {
             ),
           if (themeMode.value == ThemeMode.light)
             SvgPicture.asset(
-              'icons/app_logo_black.svg',
+              'icons/app_logo_black.svg'.forWeb(web: kIsWeb),
               height: 70,
             ),
           if (themeMode.value == ThemeMode.system)
             SvgPicture.asset(
-              'icons/app_logo_white.svg',
+              'icons/app_logo_white.svg'.forWeb(web: kIsWeb),
               height: 70,
             ),
         ],
