@@ -1,3 +1,4 @@
+import 'package:church_tool/settings/settings.dart';
 import 'package:church_tool/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,13 +22,30 @@ class CustomDrawer extends ConsumerWidget {
 
     final iconColor = getIconColor(Theme.of(context));
 
-    final title = Row(
-      children: [
-        SvgPicture.asset(
-          'icons/app_logo.svg',
-          height: 100,
-        ),
-      ],
+    final themeMode = ref.watch(CurrentThemeModeNotifier.provider);
+
+    final title = Padding(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (themeMode.value == ThemeMode.dark)
+            SvgPicture.asset(
+              'icons/app_logo_white.svg',
+              height: 70,
+            ),
+          if (themeMode.value == ThemeMode.light)
+            SvgPicture.asset(
+              'icons/app_logo_black.svg',
+              height: 70,
+            ),
+          if (themeMode.value == ThemeMode.system)
+            SvgPicture.asset(
+              'icons/app_logo_white.svg',
+              height: 70,
+            ),
+        ],
+      ),
     );
     headerDrawer.add(
       isDrawerFixed
