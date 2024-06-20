@@ -1,5 +1,6 @@
 import 'package:church_tool/settings/settings.dart';
 import 'package:church_tool/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +32,7 @@ class CustomDrawer extends ConsumerWidget {
         children: [
           if (themeMode.value == ThemeMode.dark)
             SvgPicture.asset(
-              'icons/app_logo_white.svg',
+              'icons/app_logo_white.svg'.forWeb(web: kIsWeb),
               height: 70,
             ),
           if (themeMode.value == ThemeMode.light)
